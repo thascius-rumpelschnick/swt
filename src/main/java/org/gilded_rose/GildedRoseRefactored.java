@@ -48,7 +48,7 @@ class GildedRoseRefactored {
     } else if (item.name.equals(BACKSTAGE_PASSES)) {
       handler = Optional.of(new BackstagePassesQualityHandler());
     } else if (item.name.equals(CONJURED)) {
-      handler = Optional.of(new DefaultItemQualityHandler());
+      handler = Optional.of(new ConjuredItemQualityHandler());
     } else {
       handler = Optional.empty();
     }
@@ -175,6 +175,12 @@ class GildedRoseRefactored {
         incrementQualityByFactor(item, 3);
       } else if (item.sellIn <= 10) {
         incrementQualityByFactor(item, 2);
+      } else {
+        incrementQuality(item);
+      }
+
+      if (maxQualityReached(item)) {
+        item.quality = MAX_QUALITY;
       }
     }
 
@@ -189,6 +195,7 @@ class GildedRoseRefactored {
         return;
       }
 
+      decrementSellIn(item);
       decrementQualityByFactor(item, 2);
     }
 
