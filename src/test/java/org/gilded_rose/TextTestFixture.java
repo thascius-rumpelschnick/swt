@@ -24,6 +24,29 @@ public class TextTestFixture {
       days = Integer.parseInt(args[0]) + 1;
     }
 
+    printGildedRoseText(items, days);
+    printGildedRoseRefactoredText(items, days);
+  }
+
+
+  private static void printGildedRoseText(Item[] items, int days) {
+    final var app = new GildedRose(items);
+
+    for (int i = 0; i < days; i++) {
+      System.out.println("-------- day " + i + " --------");
+      System.out.println("name, sellIn, quality");
+      for (final Item item : items) {
+        System.out.println(item);
+      }
+      System.out.println();
+      app.updateQuality();
+    }
+  }
+
+
+  private static void printGildedRoseRefactoredText(Item[] items, int days) {
+    final var app = new GildedRoseRefactored(items);
+
     for (int i = 0; i < days; i++) {
       System.out.println("-------- day " + i + " --------");
       System.out.println("name, sellIn, quality");
