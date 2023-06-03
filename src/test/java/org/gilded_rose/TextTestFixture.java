@@ -13,7 +13,7 @@ public class TextTestFixture {
   }
 
 
-  private static void printGildedRoseText(int days) {
+  private static void printGildedRoseText(final int days) {
     System.out.println("__printGildedRoseText__");
 
     final Item[] items = {
@@ -42,7 +42,7 @@ public class TextTestFixture {
   }
 
 
-  private static void printGildedRoseRefactoredText(int days) {
+  private static void printGildedRoseRefactoredText(final int days) {
     System.out.println("__printGildedRoseRefactoredText__");
 
     final Item[] items = {

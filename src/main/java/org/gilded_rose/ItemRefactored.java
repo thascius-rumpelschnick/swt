@@ -20,7 +20,7 @@ class ItemRefactored {
     return this.sellIn;
   }
 
-  public void setSellIn(int sellIn) {
+  public void setSellIn(final int sellIn) {
     this.sellIn = sellIn;
   }
 

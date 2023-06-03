@@ -39,7 +39,7 @@ class GildedRoseRefactored {
 
 
   private static Optional<QualityUpdater> createItemHandler(final Item item) {
-    Optional<QualityUpdater> handler;
+    final Optional<QualityUpdater> handler;
 
     if (isDefaultItem(item)) {
       handler = Optional.of(new DefaultItemQualityHandler());
@@ -87,12 +87,12 @@ class GildedRoseRefactored {
     }
 
 
-    protected static boolean maxQualityReached(Item item) {
+    protected static boolean maxQualityReached(final Item item) {
       return item.quality >= MAX_QUALITY;
     }
 
 
-    protected static boolean hasToBeSold(Item item) {
+    protected static boolean hasToBeSold(final Item item) {
       return item.sellIn < 0;
     }
 
@@ -127,7 +127,7 @@ class GildedRoseRefactored {
   static class DefaultItemQualityHandler extends AbstractItemHandler {
 
     @Override
-    public void updateQuality(Item item) {
+    public void updateQuality(final Item item) {
       if (minQualityIsReached(item)) {
         return;
       }
@@ -147,7 +147,7 @@ class GildedRoseRefactored {
   static class AgedBrieQualityHandler extends AbstractItemHandler {
 
     @Override
-    public void updateQuality(Item item) {
+    public void updateQuality(final Item item) {
       if (maxQualityReached(item)) {
         return;
       }
@@ -162,7 +162,7 @@ class GildedRoseRefactored {
   static class BackstagePassesQualityHandler extends AbstractItemHandler {
 
     @Override
-    public void updateQuality(Item item) {
+    public void updateQuality(final Item item) {
       if (maxQualityReached(item)) {
         return;
       }
@@ -190,7 +190,7 @@ class GildedRoseRefactored {
   static class ConjuredItemQualityHandler extends AbstractItemHandler {
 
     @Override
-    public void updateQuality(Item item) {
+    public void updateQuality(final Item item) {
       if (minQualityIsReached(item)) {
         return;
       }
