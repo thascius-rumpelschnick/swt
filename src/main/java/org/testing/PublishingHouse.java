@@ -13,7 +13,7 @@ public class PublishingHouse {
   public int calculateRoyaltiesFromTextLength(final String text) {
     Objects.requireNonNull(text, "No text provided.");
 
-    LOGGER.error("The text is {}", text);
+    LOGGER.debug("The text is {}", text);
 
     final var length = text.length();
 
