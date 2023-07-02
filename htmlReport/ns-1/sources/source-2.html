@@ -1,0 +1,412 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GildedRoseRefactored</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.gilded_rose</a>
+</div>
+
+<h1>Coverage Summary for Class: GildedRoseRefactored (org.gilded_rose)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GildedRoseRefactored</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    77,3%
+  </span>
+  <span class="absValue">
+    (17/22)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">GildedRoseRefactored$AbstractItemHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">GildedRoseRefactored$AgedBrieQualityHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">GildedRoseRefactored$BackstagePassesQualityHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">GildedRoseRefactored$ConjuredItemQualityHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">GildedRoseRefactored$DefaultItemQualityHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">GildedRoseRefactored$QualityUpdater</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    81,8%
+  </span>
+  <span class="absValue">
+    (18/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    62,5%
+  </span>
+  <span class="absValue">
+    (35/56)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.gilded_rose;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;
+&nbsp;class GildedRoseRefactored {
+&nbsp;
+&nbsp;  public static final String AGED_BRIE = &quot;Aged Brie&quot;;
+&nbsp;  public static final String SULFURAS_HAND_OF_RAGNAROS = &quot;Sulfuras, Hand of Ragnaros&quot;;
+&nbsp;  public static final String BACKSTAGE_PASSES = &quot;Backstage passes to a TAFKAL80ETC concert&quot;;
+&nbsp;  public static final String CONJURED = &quot;Conjured Mana Cake&quot;;
+&nbsp;  public static final int MIN_QUALITY = 0;
+&nbsp;  public static final int MAX_QUALITY = 50;
+&nbsp;
+&nbsp;  private final Item[] items;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;  public GildedRoseRefactored(final Item[] items) {</b>
+<b class="fc">&nbsp;    this.items = items;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  public void updateQuality() throws IllegalArgumentException {
+<b class="fc">&nbsp;    for (final Item item : this.items) {</b>
+<b class="fc">&nbsp;      if (isNeverToBeSoldItem(item)) {</b>
+<b class="fc">&nbsp;        continue;</b>
+&nbsp;      }
+&nbsp;
+<b class="fc">&nbsp;      createItemHandler(item)</b>
+<b class="fc">&nbsp;          .ifPresentOrElse(handler -&gt; handler.updateQuality(item), IllegalArgumentException::new);</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  private static boolean isNeverToBeSoldItem(final Item item) {
+<b class="fc">&nbsp;    return item.name.equals(SULFURAS_HAND_OF_RAGNAROS);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  private static Optional&lt;QualityUpdater&gt; createItemHandler(final Item item) {
+&nbsp;    final Optional&lt;QualityUpdater&gt; handler;
+&nbsp;
+<b class="fc">&nbsp;    if (isDefaultItem(item)) {</b>
+<b class="fc">&nbsp;      handler = Optional.of(new DefaultItemQualityHandler());</b>
+<b class="fc">&nbsp;    } else if (item.name.equals(AGED_BRIE)) {</b>
+<b class="fc">&nbsp;      handler = Optional.of(new AgedBrieQualityHandler());</b>
+<b class="nc">&nbsp;    } else if (item.name.equals(BACKSTAGE_PASSES)) {</b>
+<b class="nc">&nbsp;      handler = Optional.of(new BackstagePassesQualityHandler());</b>
+<b class="nc">&nbsp;    } else if (item.name.equals(CONJURED)) {</b>
+<b class="nc">&nbsp;      handler = Optional.of(new ConjuredItemQualityHandler());</b>
+&nbsp;    } else {
+<b class="nc">&nbsp;      handler = Optional.empty();</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    return handler;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  private static boolean isDefaultItem(final Item item) {
+<b class="fc">&nbsp;    return !item.name.equals(AGED_BRIE)</b>
+<b class="fc">&nbsp;        &amp;&amp; !item.name.equals(BACKSTAGE_PASSES)</b>
+<b class="fc">&nbsp;        &amp;&amp; !item.name.equals(CONJURED);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  public Item[] getItems() {
+<b class="fc">&nbsp;    return this.items;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  interface QualityUpdater {
+&nbsp;
+&nbsp;    void updateQuality(final Item item);
+&nbsp;
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  abstract static class AbstractItemHandler implements QualityUpdater {
+&nbsp;
+&nbsp;    private AbstractItemHandler() {
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static boolean minQualityIsReached(final Item item) {
+<b class="fc">&nbsp;      return item.quality &lt;= MIN_QUALITY;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static boolean maxQualityReached(final Item item) {
+<b class="fc">&nbsp;      return item.quality &gt;= MAX_QUALITY;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static boolean hasToBeSold(final Item item) {
+<b class="fc">&nbsp;      return item.sellIn &lt; 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static void incrementQualityByFactor(final Item item, final int factor) {
+<b class="fc">&nbsp;      item.quality = item.quality + factor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static void incrementQuality(final Item item) {
+<b class="fc">&nbsp;      incrementQualityByFactor(item, 1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static void decrementQualityByFactor(final Item item, final int factor) {
+<b class="fc">&nbsp;      item.quality = item.quality - factor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static void decrementQuality(final Item item) {
+<b class="fc">&nbsp;      decrementQualityByFactor(item, 1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    protected static void decrementSellIn(final Item item) {
+<b class="fc">&nbsp;      item.sellIn = item.sellIn - 1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;  }
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;  static class DefaultItemQualityHandler extends AbstractItemHandler {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void updateQuality(final Item item) {
+<b class="fc">&nbsp;      if (minQualityIsReached(item)) {</b>
+&nbsp;        return;
+&nbsp;      }
+&nbsp;
+<b class="fc">&nbsp;      decrementSellIn(item);</b>
+&nbsp;
+<b class="fc">&nbsp;      if (hasToBeSold(item)) {</b>
+<b class="fc">&nbsp;        decrementQualityByFactor(item, 2);</b>
+&nbsp;      } else {
+<b class="fc">&nbsp;        decrementQuality(item);</b>
+&nbsp;      }
+&nbsp;    }
+&nbsp;
+&nbsp;  }
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;  static class AgedBrieQualityHandler extends AbstractItemHandler {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void updateQuality(final Item item) {
+<b class="fc">&nbsp;      if (maxQualityReached(item)) {</b>
+&nbsp;        return;
+&nbsp;      }
+&nbsp;
+<b class="fc">&nbsp;      decrementSellIn(item);</b>
+<b class="fc">&nbsp;      incrementQuality(item);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;  }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;  static class BackstagePassesQualityHandler extends AbstractItemHandler {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void updateQuality(final Item item) {
+<b class="nc">&nbsp;      if (maxQualityReached(item)) {</b>
+&nbsp;        return;
+&nbsp;      }
+&nbsp;
+<b class="nc">&nbsp;      decrementSellIn(item);</b>
+&nbsp;
+<b class="nc">&nbsp;      if (hasToBeSold(item)) {</b>
+<b class="nc">&nbsp;        decrementQualityByFactor(item, item.quality);</b>
+<b class="nc">&nbsp;      } else if (item.sellIn &lt;= 5) {</b>
+<b class="nc">&nbsp;        incrementQualityByFactor(item, 3);</b>
+<b class="nc">&nbsp;      } else if (item.sellIn &lt;= 10) {</b>
+<b class="nc">&nbsp;        incrementQualityByFactor(item, 2);</b>
+&nbsp;      } else {
+<b class="nc">&nbsp;        incrementQuality(item);</b>
+&nbsp;      }
+&nbsp;
+<b class="nc">&nbsp;      if (maxQualityReached(item)) {</b>
+<b class="nc">&nbsp;        item.quality = MAX_QUALITY;</b>
+&nbsp;      }
+&nbsp;    }
+&nbsp;
+&nbsp;  }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;  static class ConjuredItemQualityHandler extends AbstractItemHandler {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void updateQuality(final Item item) {
+<b class="nc">&nbsp;      if (minQualityIsReached(item)) {</b>
+&nbsp;        return;
+&nbsp;      }
+&nbsp;
+<b class="nc">&nbsp;      decrementSellIn(item);</b>
+<b class="nc">&nbsp;      decrementQualityByFactor(item, 2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;  }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-07-02 23:42</div>
+</div>
+</body>
+</html>

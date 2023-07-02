@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ItemRefactored</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.gilded_rose</a>
+</div>
+
+<h1>Coverage Summary for Class: ItemRefactored (org.gilded_rose)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ItemRefactored</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.gilded_rose;
+&nbsp;
+&nbsp;class ItemRefactored {
+&nbsp;
+&nbsp;  private final String name;
+&nbsp;  private int sellIn;
+&nbsp;  private int quality;
+&nbsp;
+<b class="nc">&nbsp;  public ItemRefactored(final String name, final int sellIn, final int quality) {</b>
+<b class="nc">&nbsp;    this.name = name;</b>
+<b class="nc">&nbsp;    this.sellIn = sellIn;</b>
+<b class="nc">&nbsp;    this.quality = quality;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public String getName() {
+<b class="nc">&nbsp;    return this.name;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public int getSellIn() {
+<b class="nc">&nbsp;    return this.sellIn;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setSellIn(final int sellIn) {
+<b class="nc">&nbsp;    this.sellIn = sellIn;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public int getQuality() {
+<b class="nc">&nbsp;    return this.quality;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setQuality(final int quality) {
+<b class="nc">&nbsp;    this.quality = quality;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public String toString() {
+<b class="nc">&nbsp;    return this.name + &quot;, &quot; + this.sellIn + &quot;, &quot; + this.quality;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-07-02 23:42</div>
+</div>
+</body>
+</html>
