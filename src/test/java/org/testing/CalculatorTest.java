@@ -19,8 +19,8 @@ class CalculatorTest {
 
 
   @Test
-  void substract() {
-    final var result = this.calculator.substract(1, 1);
+  void subtract() {
+    final var result = this.calculator.subtract(1, 1);
 
     assertEquals(0, result);
   }
