@@ -5,7 +5,7 @@ target/
 .gradle/
 build/
 logs/
-#htmlReport
+htmlReport
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
